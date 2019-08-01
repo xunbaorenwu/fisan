@@ -6,11 +6,11 @@ use Think\Db;
 class IndexController extends Controller {
     public function index(){
         //循环插入数据
-		$pages=5*10000;
+		/*$pages=5*10000;
 		$page=I("get.page");
 		$page=empty($page)?1:$page;
 		if($page>$pages){exit('stop');}
-		for($i=1;$i<=2;$i++){
+		for($i=1;$i<=2;$i++){*/
             M("users")->add(["username"=>"燕尾服","email"=>"quan-147123@163.com","tel"=>'13878347947','pro'=>"///////////////////////////////
 tp5.1 路由执行流程图
 this->routeInit();  //路由初始化，注册路由
@@ -54,7 +54,7 @@ Dispatch 内的  autoResponse 将数据转化为  Response
 //如果是  /a/1/b/2  这种形式的链接，Url 内的  parseUrl 解析额外参数所得
 
 "]);
-		}
+		//}
         //$page++;
 		//$this->success("haha","/home/index/index/page/$page");
     }
