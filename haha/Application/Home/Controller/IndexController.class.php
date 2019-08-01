@@ -10,7 +10,7 @@ class IndexController extends Controller {
 		$page=I("get.page");
 		$page=empty($page)?1:$page;
 		if($page>$pages){exit('stop');}
-		for($i=1;$i<=1000;$i++){
+		for($i=1;$i<=2;$i++){
             M("users")->add(["username"=>"燕尾服","email"=>"quan-147123@163.com","tel"=>'13878347947','pro'=>"///////////////////////////////
 tp5.1 路由执行流程图
 this->routeInit();  //路由初始化，注册路由
