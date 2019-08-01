@@ -5,6 +5,7 @@ use Think\Db;
 
 class IndexController extends Controller {
     public function index(){
+		phpinfo();exit;
         //循环插入数据
 		$pages=5*10000;
 		$page=I("get.page");
@@ -170,7 +171,7 @@ Dispatch 内的  autoResponse 将数据转化为  Response
 
 "]);
 		}
-        $page++;
-		$this->success("haha","/home/index/index/page/$page");
+        //$page++;
+		//$this->success("haha","/home/index/index/page/$page");
     }
 }
