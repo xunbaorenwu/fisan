@@ -5,6 +5,7 @@ use Think\Db;
 
 class IndexController extends Controller {
     public function index(){
+		echo $_SERVER['SERVER_ADDR'];exit;
         //循环插入数据
 		/*$pages=5*10000;
 		$page=I("get.page");
