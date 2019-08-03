@@ -2,19 +2,27 @@
 namespace Home\Controller;
 use Think\Controller;
 use Think\Db;
+//vendor("Redis");
+use \Redis\MyRedis;
 
 class IndexController extends Controller {
+
+	private $redis=null;
+
+	public function __construct(){
+         $this->redis=MyRedis::getInstance();
+	}
+
 	public function updateage(){
         $age=mt_rand(1,99);
-		$page=I("get.page");
-		$page=empty($page)?1:$page;
-		if($page>602314){exit("stop");}
-		$re=M("users")->where(["id"=>$page])->find();
-		if($re){
-           M("users")->where(["id"=>$page])->save(["age"=>$age]);
-		}
-		$page++;
-        $this->success("haha","/home/index/updateage/page/$page");
+
+        $id=M("users")->order("id")->where("age=0")->getField("id");
+		if(!$id){exit('stop');}
+
+        M("users")->where(["id"=>$id])->save(["age"=>$age]);
+
+
+        $this->success("haha:{$id}","/home/index/updateage");
 	}
 
     public function index(){
