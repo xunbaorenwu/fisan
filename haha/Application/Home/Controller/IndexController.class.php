@@ -9,7 +9,7 @@ class IndexController extends Controller {
 	private $redis=null;
 
 	public function __construct(){
-         $this->redis=MyRedis::getInstance();
+         $this->redis=\MyRedis::getInstance();
 	}
 
 	public function updateage(){
