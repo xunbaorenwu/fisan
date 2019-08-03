@@ -13,12 +13,12 @@ class IndexController extends Controller {
 	}
 
 	public function updateage(){
-        M("users")->startTrans();//开启事务
+        
 		$age2=mt_rand(1,99);
         $re=M("users")->order("id")->where("age=0")->find();
 		$id=$re['id'];
 		if(!$id){exit('stop');}
-
+        M("users")->startTrans();//开启事务
 
         $age=M("users")->lock(true)->where("id=$id")->getField('age');
 
@@ -27,7 +27,7 @@ class IndexController extends Controller {
 		
         if($flag){
           M("users")->commit();
-		  print_r("2");
+		  print_r($age2);
 		}else{
           M("users")->rollback();
 		  print_r("3");
