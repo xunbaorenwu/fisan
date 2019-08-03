@@ -22,11 +22,14 @@ class IndexController extends Controller {
         $age=M("users")->lock(true)->where("id=$id")->getField('age');
         if($age==0){
 			$flag=M("users")->where(["id"=>$id])->save(["age"=>$age]);
-		}
+		
         if($flag){
           M("users")->commit();
 		}else{
           M("users")->rollback();
+		}
+		}else{
+           M("users")->rollback();
 		}
         $this->success("haha:{$id}","/home/index/updateage");
 	}
