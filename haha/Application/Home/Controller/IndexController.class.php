@@ -24,7 +24,7 @@ class IndexController extends Controller {
         $this->success("haha:{$id}","/home/index/updateage");
 	}
 
-    public function index(){exit;
+    public function index(){
         //循环插入数据
 		/*$pages=5*10000;
 		$page=I("get.page");
