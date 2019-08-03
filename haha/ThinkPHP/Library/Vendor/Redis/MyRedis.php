@@ -1,5 +1,5 @@
 <?php
-namespace \Redis;
+namespace Redis;
 /**
  * redis操作类
  * 说明，任何为false的串，存在redis中都是空串。
