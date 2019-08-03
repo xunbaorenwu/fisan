@@ -14,7 +14,7 @@ class IndexController extends Controller {
            M("users")->where(["id"=>$page])->save(["age"=>$age]);
 		}
 		$page++;
-        $this->success("haha","/home/index/updateAge/page/$page");
+        $this->success("haha","/home/index/updateage/page/$page");
 	}
 
     public function index(){
