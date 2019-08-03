@@ -14,13 +14,20 @@ class IndexController extends Controller {
 
 	public function updateage(){
         $age=mt_rand(1,99);
-
+        
         $id=M("users")->order("id")->where("age=0")->getField("id");
 		if(!$id){exit('stop');}
 
-        M("users")->where(["id"=>$id])->save(["age"=>$age]);
-
-
+		M("users")->startTrans();//开启事务
+        $age=M("users")->lock(true)->where("id=$id")->getField('age');
+        if($age==0){
+			$flag=M("users")->where(["id"=>$id])->save(["age"=>$age]);
+		}
+        if($flag){
+          M("users")->commit();
+		}else{
+          M("users")->rollback();
+		}
         $this->success("haha:{$id}","/home/index/updateage");
 	}
 

@@ -40,7 +40,7 @@ class MyRedis
      
     protected $port;
 
-	private static $config=['host'=>'192.168.153.129','port'=>'6379','auth'=>'123456'];
+	private static $config=['host'=>'192.168.153.129','port'=>6379,'auth'=>'123456'];
      
          
     private function __construct($config,$attr=array())
