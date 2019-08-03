@@ -14,12 +14,12 @@ class IndexController extends Controller {
 
 	public function updateage(){
         $age=mt_rand(1,99);
-        
+        M("users")->startTrans();//开启事务
         $re=M("users")->order("id")->where("age=0")->find();
 		$id=$re['id'];
 		if(!$id){exit('stop');}
 
-		M("users")->startTrans();//开启事务
+		
         $age=M("users")->lock(true)->where("id=$id")->getField('age');
         if($age==0){
 			$flag=M("users")->where(["id"=>$id])->save(["age"=>$age]);
