@@ -18,7 +18,7 @@ class IndexController extends Controller {
         $re=M("users")->order("id")->where("age=0")->find();
 		$id=$re['id'];
 		if(!$id){exit('stop');}
-        M("users")->startTrans();//开启事务
+        M()->startTrans();//开启事务
 
         $age=M("users")->lock(true)->where("id=$id")->getField('age');
 
@@ -26,14 +26,14 @@ class IndexController extends Controller {
 			$flag=M("users")->where(["id"=>$id])->save(["age"=>$age2]);
 		
         if($flag){
-          M("users")->commit();
+          M()->commit();
 		  print_r($age2);
 		}else{
-          M("users")->rollback();
+          M()->rollback();
 		  print_r("3");
 		}
 		}else{
-           M("users")->rollback();print_r("4");
+           M()->rollback();print_r("4");
 		}
         //$this->success("haha:{$id}","/home/index/updateage");
 	}
