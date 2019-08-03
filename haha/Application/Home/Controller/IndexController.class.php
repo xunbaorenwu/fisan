@@ -31,7 +31,7 @@ class IndexController extends Controller {
 		}else{
            M("users")->rollback();
 		}
-        $this->success("haha","/home/index/updateage/page/{$id}");
+        //$this->success("haha:{$id}","/home/index/updateage");
 	}
 
     public function index(){
