@@ -9,7 +9,7 @@ class IndexController extends Controller {
 	private $redis=null;
 
 	public function __construct(){
-         $this->redis=MyRedis::getInstance();
+         $this->redis=\Redis\MyRedis::getInstance();
 	}
 
 	public function updateage(){
@@ -24,7 +24,7 @@ class IndexController extends Controller {
         $this->success("haha:{$id}","/home/index/updateage");
 	}
 
-    public function index(){
+    public function index(){exit;
         //循环插入数据
 		/*$pages=5*10000;
 		$page=I("get.page");

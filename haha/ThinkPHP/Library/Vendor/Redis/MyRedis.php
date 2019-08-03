@@ -40,14 +40,14 @@ class MyRedis
      
     protected $port;
 
-	private $config=['host'=>'192.168.153.129','port'=>6379,'auth'=>'123456'];
+	private static $config=['host'=>'192.168.153.129','port'=>6379,'auth'=>'123456'];
      
          
     private function __construct($config,$attr=array())
     {
-		$config=empty($config)?$this->config:$config;
+		$config=empty($config)?self::$config:$config;
         $this->attr        =    array_merge($this->attr,$attr);
-        $this->redis    =    new Redis();
+        $this->redis    =    new \Redis();
         $this->port        =    $config['port'] ? $config['port'] : 6379;
         $this->host        =    $config['host'];
         $this->redis->connect($this->host, $this->port, $this->attr['timeout']);
@@ -71,7 +71,7 @@ class MyRedis
      */
     public static function getInstance($config = array(), $attr = array())
     {
-		$config=empty($config)?$this->config:$config;
+		$config=empty($config)?self::$config:$config;
         //如果是一个字符串，将其认为是数据库的ID号。以简化写法。
         if(!is_array($attr))
         {
