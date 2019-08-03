@@ -13,24 +13,27 @@ class IndexController extends Controller {
 	}
 
 	public function updateage(){
-        $age=mt_rand(1,99);
         M("users")->startTrans();//开启事务
+		$age=mt_rand(1,99);
         $re=M("users")->order("id")->where("age=0")->find();
 		$id=$re['id'];
 		if(!$id){exit('stop');}
 
-		
+		print_r("1");
         $age=M("users")->lock(true)->where("id=$id")->getField('age');
+		print_r($age);
         if($age==0){
 			$flag=M("users")->where(["id"=>$id])->save(["age"=>$age]);
 		
         if($flag){
           M("users")->commit();
+		  print_r("2");
 		}else{
           M("users")->rollback();
+		  print_r("3");
 		}
 		}else{
-           M("users")->rollback();
+           M("users")->rollback();print_r("4");
 		}
         //$this->success("haha:{$id}","/home/index/updateage");
 	}
