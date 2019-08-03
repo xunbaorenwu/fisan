@@ -15,7 +15,8 @@ class IndexController extends Controller {
 	public function updateage(){
         $age=mt_rand(1,99);
         
-        $id=M("users")->order("id")->where("age=0")->getField("id");
+        $re=M("users")->order("id")->where("age=0")->find();
+		$id=$re['id'];
 		if(!$id){exit('stop');}
 
 		M("users")->startTrans();//开启事务
