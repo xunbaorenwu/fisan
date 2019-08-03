@@ -2,8 +2,7 @@
 namespace Home\Controller;
 use Think\Controller;
 use Think\Db;
-//vendor("Redis");
-use \Redis\MyRedis;
+vendor("Redis.MyRedis");
 
 class IndexController extends Controller {
 
