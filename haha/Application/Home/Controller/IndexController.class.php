@@ -4,7 +4,7 @@ use Think\Controller;
 use Think\Db;
 
 class IndexController extends Controller {
-	public function updateAge(){
+	public function updateage(){
         $age=mt_rand(1,99);
 		$page=I("get.page");
 		$page=empty($page)?1:$page;
